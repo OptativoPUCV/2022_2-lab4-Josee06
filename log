@@ -1,0 +1,8 @@
+Fri 09 Sep 2022 04:50:40 PM UTC: 
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:21:1: error: expected identifier or ‘(’ before ‘{’ token
+   21 | {
+      | ^
+Compilation failed
+c9c48d6
