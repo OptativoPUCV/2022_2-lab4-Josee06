@@ -921,3 +921,14 @@ Fri 09 Sep 2022 05:40:05 PM UTC:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 c2af8f2
+Fri 09 Sep 2022 09:40:33 PM UTC: 
+ hashmap.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:76:19: error: assignment to ‘Pair **’ from incompatible pointer type ‘Pair *’ [-Werror=incompatible-pointer-types]
+   76 |   newmap->buckets = (Pair *) malloc(sizeof(Pair)*capacity);
+      |                   ^
+cc1: all warnings being treated as errors
+Compilation failed
+540fa19
