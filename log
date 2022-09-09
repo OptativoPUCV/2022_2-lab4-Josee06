@@ -72,3 +72,35 @@ hashmap.h:20:11: note: previous definition of ‘createMap’ was here
       |           ^~~~~~~~~
 Compilation failed
 6d8e3eb
+Fri 09 Sep 2022 05:03:04 PM UTC: 
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h: In function ‘createMap’:
+hashmap.h:22:55: error: expected expression before ‘)’ token
+   22 |   HashMap* newmap = (HashMap*) malloc(sizeof*(HashMap));
+      |                                                       ^
+hashmap.h:23:9: error: invalid use of incomplete typedef ‘HashMap’
+   23 |   newmap->buckets = (Pair **)malloc(sizeof(capacity));
+      |         ^~
+hashmap.h:24:9: error: invalid use of incomplete typedef ‘HashMap’
+   24 |   newmap->capacity=capacity;
+      |         ^~
+hashmap.h:25:9: error: invalid use of incomplete typedef ‘HashMap’
+   25 |   newmap->size=0;
+      |         ^~
+hashmap.h:26:3: error: ‘new’ undeclared (first use in this function)
+   26 |   new->current=-1;
+      |   ^~~
+hashmap.h:26:3: note: each undeclared identifier is reported only once for each function it appears in
+In file included from test.c:4:
+hashmap.c: At top level:
+hashmap.c:55:11: error: redefinition of ‘createMap’
+   55 | HashMap * createMap(long capacity) {
+      |           ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:20:11: note: previous definition of ‘createMap’ was here
+   20 | HashMap * createMap(long capacity)
+      |           ^~~~~~~~~
+Compilation failed
+916509d
