@@ -165,3 +165,72 @@ hashmap.h:20:11: note: previous definition of ‘createMap’ was here
       |           ^~~~~~~~~
 Compilation failed
 cdbcac9
+Fri 09 Sep 2022 05:15:44 PM UTC: 
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h: In function ‘createMap’:
+hashmap.h:23:9: error: invalid use of incomplete typedef ‘HashMap’
+   23 |   newmap->buckets = (Pair **) malloc(sizeof(capacity));
+      |         ^~
+hashmap.h:24:9: error: invalid use of incomplete typedef ‘HashMap’
+   24 |   newmap->capacity= capacity;
+      |         ^~
+hashmap.h:25:9: error: invalid use of incomplete typedef ‘HashMap’
+   25 |   newmap->size= 0;
+      |         ^~
+hashmap.h:26:3: error: ‘new’ undeclared (first use in this function)
+   26 |   new->current= -1;
+      |   ^~~
+hashmap.h:26:3: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.h: In function ‘insertMap’:
+hashmap.h:32:17: error: implicit declaration of function ‘createPair’; did you mean ‘createMap’? [-Werror=implicit-function-declaration]
+   32 |   Pair *newPair=createPair( key,value);
+      |                 ^~~~~~~~~~
+      |                 createMap
+hashmap.h:32:17: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+hashmap.h:33:14: error: implicit declaration of function ‘hash’ [-Werror=implicit-function-declaration]
+   33 |   size_t i = hash (key,map->capacity);
+      |              ^~~~
+hashmap.h:33:24: error: ‘map’ undeclared (first use in this function)
+   33 |   size_t i = hash (key,map->capacity);
+      |                        ^~~
+In file included from test.c:4:
+hashmap.c: At top level:
+hashmap.c:19:8: error: conflicting types for ‘createPair’
+   19 | Pair * createPair( char * key,  void * value)
+      |        ^~~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:32:17: note: previous implicit declaration of ‘createPair’ was here
+   32 |   Pair *newPair=createPair( key,value);
+      |                 ^~~~~~~~~~
+In file included from test.c:4:
+hashmap.c:27:6: error: conflicting types for ‘hash’
+   27 | long hash( char * key, long capacity) {
+      |      ^~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:33:14: note: previous implicit declaration of ‘hash’ was here
+   33 |   size_t i = hash (key,map->capacity);
+      |              ^~~~
+In file included from test.c:4:
+hashmap.c:43:6: error: redefinition of ‘insertMap’
+   43 | void insertMap(HashMap * map, char * key, void * value) {
+      |      ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:30:6: note: previous definition of ‘insertMap’ was here
+   30 | void insertMap(HashMap * table, char * key, void * value)
+      |      ^~~~~~~~~
+In file included from test.c:4:
+hashmap.c:55:11: error: redefinition of ‘createMap’
+   55 | HashMap * createMap(long capacity) {
+      |           ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:20:11: note: previous definition of ‘createMap’ was here
+   20 | HashMap * createMap(long capacity)
+      |           ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+80e52a7
