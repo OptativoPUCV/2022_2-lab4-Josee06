@@ -916,3 +916,8 @@ hashmap.c:78:3: error: ‘new’ undeclared (first use in this function)
 hashmap.c:78:3: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 729c988
+Fri 09 Sep 2022 05:40:05 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+c2af8f2
