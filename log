@@ -303,3 +303,114 @@ hashmap.h:20:11: note: previous definition of ‘createMap’ was here
 cc1: all warnings being treated as errors
 Compilation failed
 50ddc91
+Fri 09 Sep 2022 05:26:16 PM UTC: 
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h: In function ‘createMap’:
+hashmap.h:23:9: error: invalid use of incomplete typedef ‘HashMap’
+   23 |   newmap->buckets = (Pair **) malloc(sizeof(capacity));
+      |         ^~
+hashmap.h:24:9: error: invalid use of incomplete typedef ‘HashMap’
+   24 |   newmap->capacity= capacity;
+      |         ^~
+hashmap.h:25:9: error: invalid use of incomplete typedef ‘HashMap’
+   25 |   newmap->size= 0;
+      |         ^~
+hashmap.h:26:3: error: ‘new’ undeclared (first use in this function)
+   26 |   new->current= -1;
+      |   ^~~
+hashmap.h:26:3: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.h: In function ‘insertMap’:
+hashmap.h:32:17: error: implicit declaration of function ‘createPair’; did you mean ‘createMap’? [-Werror=implicit-function-declaration]
+   32 |   Pair *newPair=createPair( key,value);
+      |                 ^~~~~~~~~~
+      |                 createMap
+hashmap.h:32:17: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+hashmap.h:33:14: error: implicit declaration of function ‘hash’ [-Werror=implicit-function-declaration]
+   33 |   size_t i = hash (key,map->capacity);
+      |              ^~~~
+hashmap.h:33:24: error: ‘map’ undeclared (first use in this function)
+   33 |   size_t i = hash (key,map->capacity);
+      |                        ^~~
+hashmap.h: In function ‘eraseMap’:
+hashmap.h:55:25: error: implicit declaration of function ‘searchMap’ [-Werror=implicit-function-declaration]
+   55 |   Pair *pairEliminado = searchMap(map,key);
+      |                         ^~~~~~~~~
+hashmap.h:55:35: error: ‘map’ undeclared (first use in this function)
+   55 |   Pair *pairEliminado = searchMap(map,key);
+      |                                   ^~~
+hashmap.h:55:9: error: unused variable ‘pairEliminado’ [-Werror=unused-variable]
+   55 |   Pair *pairEliminado = searchMap(map,key);
+      |         ^~~~~~~~~~~~~
+hashmap.h: At top level:
+hashmap.h:59:8: error: conflicting types for ‘searchMap’
+   59 | Pair * searchMap(HashMap * table, char * key)
+      |        ^~~~~~~~~
+hashmap.h:55:25: note: previous implicit declaration of ‘searchMap’ was here
+   55 |   Pair *pairEliminado = searchMap(map,key);
+      |                         ^~~~~~~~~
+hashmap.h: In function ‘searchMap’:
+hashmap.h:61:22: error: ‘map’ undeclared (first use in this function)
+   61 |   size_t i= hash(key,map->capacity);
+      |                      ^~~
+hashmap.h:69:10: error: implicit declaration of function ‘is_equal’ [-Werror=implicit-function-declaration]
+   69 |       if(is_equal(key,map->buckets[i]->key))
+      |          ^~~~~~~~
+In file included from test.c:4:
+hashmap.c: At top level:
+hashmap.c:19:8: error: conflicting types for ‘createPair’
+   19 | Pair * createPair( char * key,  void * value)
+      |        ^~~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:32:17: note: previous implicit declaration of ‘createPair’ was here
+   32 |   Pair *newPair=createPair( key,value);
+      |                 ^~~~~~~~~~
+In file included from test.c:4:
+hashmap.c:27:6: error: conflicting types for ‘hash’
+   27 | long hash( char * key, long capacity) {
+      |      ^~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:33:14: note: previous implicit declaration of ‘hash’ was here
+   33 |   size_t i = hash (key,map->capacity);
+      |              ^~~~
+In file included from test.c:4:
+hashmap.c:43:6: error: redefinition of ‘insertMap’
+   43 | void insertMap(HashMap * map, char * key, void * value) {
+      |      ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:30:6: note: previous definition of ‘insertMap’ was here
+   30 | void insertMap(HashMap * table, char * key, void * value)
+      |      ^~~~~~~~~
+In file included from test.c:4:
+hashmap.c:55:11: error: redefinition of ‘createMap’
+   55 | HashMap * createMap(long capacity) {
+      |           ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:20:11: note: previous definition of ‘createMap’ was here
+   20 | HashMap * createMap(long capacity)
+      |           ^~~~~~~~~
+In file included from test.c:4:
+hashmap.c:60:6: error: redefinition of ‘eraseMap’
+   60 | void eraseMap(HashMap * map,  char * key) {
+      |      ^~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:53:6: note: previous definition of ‘eraseMap’ was here
+   53 | void eraseMap(HashMap * table, char * key)
+      |      ^~~~~~~~
+In file included from test.c:4:
+hashmap.c:65:8: error: redefinition of ‘searchMap’
+   65 | Pair * searchMap(HashMap * map,  char * key) {
+      |        ^~~~~~~~~
+In file included from hashmap.c:6,
+                 from test.c:4:
+hashmap.h:59:8: note: previous definition of ‘searchMap’ was here
+   59 | Pair * searchMap(HashMap * table, char * key)
+      |        ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+2c58018
